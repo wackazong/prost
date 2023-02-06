@@ -485,7 +485,7 @@ impl<'a> CodeGenerator<'a> {
         fields: &[(FieldDescriptorProto, usize)],
     ) {
         let name = format!(
-            "{}::{}",
+            "mod_{}::{}",
             to_snake(message_name),
             to_upper_camel(oneof.name())
         );
@@ -831,7 +831,7 @@ impl<'a> CodeGenerator<'a> {
         self.buf.push_str("`.\n");
 
         self.push_indent();
-        self.buf.push_str("pub mod ");
+        self.buf.push_str("pub mod mod_");
         self.buf.push_str(&to_snake(module));
         self.buf.push_str(" {\n");
 
